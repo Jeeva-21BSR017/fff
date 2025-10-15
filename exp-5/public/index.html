@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+  <title>Todo App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <style>
+    body { font-family: Arial; margin: 50px auto; width: 400px; text-align: center; }
+    input { padding: 6px; width: 70%; }
+    button { padding: 6px 10px; margin: 5px; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 6px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body ng-controller="TodoCtrl">
+
+  <h2>📝 Simple Todo</h2>
+
+  <input type="text" ng-model="newTask" placeholder="Enter task">
+  <button ng-click="addTask()">Add</button>
+
+  <ul>
+    <li ng-repeat="t in todos track by $index">
+      {{t}}
+      <button ng-click="removeTask($index)">x</button>
+    </li>
+  </ul>
+
+   <script>
+    angular.module('todoApp', [])
+      .controller('TodoCtrl', function($scope) {
+        $scope.todos = [];
+
+        $scope.addTask = function() {
+          if ($scope.newTask) {
+            $scope.todos.push($scope.newTask);
+            $scope.newTask = ''; // clear input
+          }
+        };
+
+        $scope.removeTask = function(index) {
+          $scope.todos.splice(index, 1);
+        };
+      });
+  </script>
+</body>
+</html>

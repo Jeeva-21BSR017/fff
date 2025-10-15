@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head><title>Quiz</title></head>
+<body style="text-align:center; margin-top:50px;">
+  <h2 id="topicName"></h2>
+  <div id="quiz"></div>
+  <button onclick="submitQuiz()">Submit</button>
+
+  <script>
+    const topic = localStorage.getItem('topic');
+    document.getElementById('topicName').innerText = 'Topic: ' + topic;
+
+    let questions = [];
+
+    fetch(`/questions/${topic}`)
+      .then(res => res.json())
+      .then(data => {
+        questions = data;
+        const quizDiv = document.getElementById('quiz');
+        quizDiv.innerHTML = data.map((q, i) => `
+          <p><b>${i+1}. ${q.question}</b></p>
+          ${q.options.map(opt =>
+            `<label><input type="radio" name="q${i}" value="${opt}"> ${opt}</label><br>`
+          ).join('')}
+        `).join('<br>');
+      });
+
+    function submitQuiz() {
+      const answers = questions.map((_, i) => {
+        const opt = document.querySelector(`input[name=q${i}]:checked`);
+        return opt ? opt.value : null;
+      });
+
+      fetch('/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic, answers })
+      })
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem('score', data.score);
+        localStorage.setItem('total', data.total);
+        window.location.href = 'result.html';
+      });
+    }
+  </script>
+</body>
+</html>

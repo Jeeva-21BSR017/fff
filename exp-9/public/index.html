@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Quiz App</title></head>
+<body style="text-align:center; margin-top:80px;">
+  <h2>Select Topic</h2>
+  <select id="topic">
+    <option value="javascript">JavaScript</option>
+    <option value="nodejs">Node.js</option>
+  </select><br><br>
+  <button onclick="startQuiz()">Start Quiz</button>
+
+  <script>
+    function startQuiz() {
+      const topic = document.getElementById('topic').value;
+      localStorage.setItem('topic', topic);
+      window.location.href = 'quiz.html';
+    }
+  </script>
+</body>
+</html>

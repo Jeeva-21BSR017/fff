@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Records</title>
+</head>
+<body style="text-align:center;">
+  <h2>📚 Student List</h2>
+  <a href="/add">➕ Add New Student</a>
+  <br><br>
+  <table border="1" width="60%" align="center">
+    <tr><th>Name</th><th>Email</th><th>Age</th><th>Action</th></tr>
+    {{#each students}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.age}}</td>
+      <td>
+        <a href="/edit/{{this._id}}">Edit</a> | 
+        <a href="/delete/{{this._id}}">Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+</body>
+</html>

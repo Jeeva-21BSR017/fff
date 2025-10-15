@@ -1,0 +1,26 @@
+{
+  "javascript": [
+    {
+      "question": "What keyword is used to declare a variable in JavaScript?",
+      "options": ["var", "int", "string", "const"],
+      "answer": "var"
+    },
+    {
+      "question": "Which symbol is used for comments in JavaScript?",
+      "options": ["//", "#", "/* */", "<!-- -->"],
+      "answer": "//"
+    }
+  ],
+  "nodejs": [
+    {
+      "question": "Which module is used to create a server in Node.js?",
+      "options": ["http", "fs", "url", "os"],
+      "answer": "http"
+    },
+    {
+      "question": "Which command initializes a Node.js project?",
+      "options": ["npm start", "npm init", "node init", "init project"],
+      "answer": "npm init"
+    }
+  ]
+}

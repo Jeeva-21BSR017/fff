@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <title>AngularJS Counter</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-init="count=0" style="text-align:center; margin-top:100px;">
+  <h1>Counter: {{count}}</h1>
+  <button ng-click="count = count + 1">+</button>
+  <button ng-click="count = count - 1">−</button>
+  <button ng-click="count = 0">Reset</button>
+</body>
+</html>

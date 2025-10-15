@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Result</title></head>
+<body style="text-align:center; margin-top:80px;">
+  <h2>Your Score</h2>
+  <h3 id="score"></h3>
+  <button onclick="window.location.href='index.html'">Go Home</button>
+
+  <script>
+    const score = localStorage.getItem('score');
+    const total = localStorage.getItem('total');
+    document.getElementById('score').innerText = `${score} / ${total}`;
+  </script>
+</body>
+</html>

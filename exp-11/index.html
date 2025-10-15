@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="calcApp">
+<head>
+  <title>Simple Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="CalcCtrl" style="text-align:center; margin-top:50px; font-family:Arial;">
+  <h2>AngularJS Calculator</h2>
+
+  <div>
+    <input type="number" ng-model="num1" placeholder="First number">
+    <select ng-model="op">
+      <option value="+">+</option>
+      <option value="-">−</option>
+      <option value="*">×</option>
+      <option value="/">÷</option>
+    </select>
+    <input type="number" ng-model="num2" placeholder="Second number">
+  </div>
+
+  <h3 style="margin-top:20px;">
+    Result: {{ calculate() }}
+  </h3>
+
+  <script>
+    angular.module('calcApp', [])
+    .controller('CalcCtrl', function($scope) {
+      $scope.num1 = 0;
+      $scope.num2 = 0;
+      $scope.op = '+';
+
+      $scope.calculate = function() {
+        switch ($scope.op) {
+          case '+': return Number($scope.num1) + Number($scope.num2);
+          case '-': return $scope.num1 - $scope.num2;
+          case '*': return $scope.num1 * $scope.num2;
+          case '/': return $scope.num2 != 0 ? $scope.num1 / $scope.num2 : '∞';
+        }
+      };
+    });
+  </script>
+</body>
+</html>
