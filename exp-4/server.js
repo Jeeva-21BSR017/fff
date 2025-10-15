@@ -15,6 +15,7 @@ mongoose.connect('mongodb+srv://jeevaa24mca_db_user:jeeva@cluster0.wlgzlrd.mongo
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
 // ROUTES
 
