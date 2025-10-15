@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Offline Weather App</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 60px;">
+
+  <h2>🌦 Simple Weather App</h2>
+  <p>Enter a city name to check the (sample) weather:</p>
+
+  <input type="text" id="city" placeholder="Enter city">
+  <button onclick="showWeather()">Check Weather</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function showWeather() {
+      const city = document.getElementById("city").value.trim().toLowerCase();
+      const result = document.getElementById("result");
+
+      // 🔹 Hardcoded sample weather data
+      const weatherData = {
+        chennai: { temp: 32, desc: "Sunny" },
+        delhi: { temp: 28, desc: "Partly Cloudy" },
+        mumbai: { temp: 30, desc: "Humid" },
+        bangalore: { temp: 26, desc: "Cool Breeze" },
+        kolkata: { temp: 29, desc: "Light Rain" }
+      };
+
+   
+        const w = weatherData[city];
+        result.innerHTML = `🌍 Weather in <b>${city.charAt(0).toUpperCase() + city.slice(1)}</b><br>
+                            🌡 Temperature: ${w.temp}°C<br>
+                            ☁ Condition: ${w.desc}`;
+     
+    }
+  </script>
+
+</body>
+</html>
